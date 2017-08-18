@@ -29,4 +29,34 @@ Twitter-Snowflake算法产生的背景相当简单，为了满足Twitter每秒�
 ## Snowflake – 序列号
 序列号就是一系列的自增id（多线程建议使用atomic），为了处理在同一毫秒内需要给多条消息分配id，若同一毫秒把序列号用完了，则“等待至下一毫秒”。
 
-## hibernate使用
+# 获取
+
+<dependency>
+	<groupId>cn.izern</groupId>
+	<artifactId>sequence</artifactId>
+	<version>${version}</version>
+</dependency>
+
+## 使用
+import cn.izern.sequence.Sequence;
+
+Sequence sequence = new Sequence();
+sequence.nextId();
+线程安全,生成唯一序列ID
+
+## hibernate/jpa 使用Sequence作为ID生成方式
+
+private Long id;
+	
+// other 
+
+@Id
+@GeneratedValue(generator = "idGenerator")
+@GenericGenerator(name = "idGenerator", strategy = "cn.izern.hibernate.id.IDSequenceGenerator")
+public Long getId() {
+	return id;
+}
+
+public void setId(Long id) {
+	this.id = id;
+}

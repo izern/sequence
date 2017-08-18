@@ -18,7 +18,7 @@ import cn.izern.sequence.Sequence;
  * @author zern
  * create on 2017年8月18日
  */
-public class IDWorkerGenerator implements Configurable, IdentifierGenerator{
+public class IDSequenceGenerator implements Configurable, IdentifierGenerator{
 
 	private Sequence sequence = new Sequence();
 	
