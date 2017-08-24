@@ -6,6 +6,7 @@
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	
+	<name>sequence</name>
 	<url>https://github.com/izern/sequence</url>
   	<inceptionYear>2017</inceptionYear>
   	<description>高效GUID产生算法(sequence),基于Snowflake实现64位自增ID算法。</description>

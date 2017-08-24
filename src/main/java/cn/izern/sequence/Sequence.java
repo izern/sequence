@@ -69,9 +69,9 @@ public class Sequence {
 
 	/**
 	 * 获取 maxWorkerId
-	 * @param datacenterId
-	 * @param maxWorkerId
-	 * @return
+	 * @param datacenterId	 数据中心id
+	 * @param maxWorkerId	 机器id
+	 * @return	maxWorkerId
 	 */
 	protected static long getMaxWorkerId(long datacenterId, long maxWorkerId) {
 		StringBuilder mpid = new StringBuilder();
@@ -84,11 +84,14 @@ public class Sequence {
 		//MAC + PID 的 hashcode 获取16个低位
 		return (mpid.toString().hashCode() & 0xffff) % (maxWorkerId + 1);
 	}
-    /**
-     * <p>
+
+	/**
+	 * <p>
      * 数据标识id部分
      * </p>
-     */
+	 * @param maxDatacenterId
+	 * @return 
+	 */
 	protected static long getDatacenterId(long maxDatacenterId) {
 		long id = 0L;
 		try {
@@ -112,7 +115,7 @@ public class Sequence {
 	/**
 	 * 获得下一个ID (该方法是线程安全的)
 	 * 
-	 * @return
+	 * @return nextId
 	 */
 	public synchronized long nextId() {
 		long timestamp = timeGen();
